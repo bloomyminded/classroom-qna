@@ -7,11 +7,11 @@ class Question < ActiveRecord::Base
   def upvote_rank? #change threshold in production
     case self.upvote
     when 0..3
-      'ratinglow'
+      'badge-low'
     when 4..7
-      'ratingmed'
+      'badge-med'
     when 7..300
-      'ratinghigh'
+      'badge-high'
     end
   end
 

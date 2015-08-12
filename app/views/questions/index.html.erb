@@ -1,31 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Rating</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.description %></td>
-        <td class='<%= question.upvote_rank? %>'><%= question.upvote %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="cards">
+  <% @questions.each do |question| %>
+    <div class="card">
+      <%= link_to question do %>
+      <div class="card-header">
+        <%= question.title %>
+        <span class=<%= question.upvote_rank? %> ><%= question.upvote %></span>
+      </div>
     <% end %>
-  </tbody>
-</table>
+      <div class="card-copy">
+        <%= question.description %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<div align='center'><%= button_to 'New Question', new_question_path %></div>
