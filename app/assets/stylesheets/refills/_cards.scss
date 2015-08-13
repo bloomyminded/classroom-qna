@@ -25,7 +25,7 @@
   $card-image-hover-background: lighten($card-image-background, 5%);
   $card-margin: 1em;
 
-  @include flex-basis(20em);
+  @include flex-basis(30em);
   @include flex-grow(1);
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
@@ -57,6 +57,10 @@
     font-weight: bold;
     line-height: 1.5em;
     padding: ($base-spacing / 3) ($base-spacing / 2);
+
+    span {
+      float: right;
+    }
   }
 
   .card-copy {
@@ -87,9 +91,21 @@
     p {
       margin: 0 0 ($base-spacing / 2);
     }
-    display: none;
+
   }
   
+  .card-comment-hide {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+
+    display: none; 
+  }
+
   &:focus,
   &:hover {
     background-color: $card-hover-background;
@@ -102,7 +118,7 @@
       background-color: $card-hover-background;
     }
 
-    .card-comment {
+    .card-comment-hide {
       display: block;
     }
   }
