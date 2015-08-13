@@ -5,3 +5,12 @@
 @import "refills/_type-system-traditional.scss";
 @import "refills/_cards.scss";
 @import "refills/_badges.scss";
+@import "refills/_comment.scss";
+
+section {
+  @include outer-container;
+  .cards {
+    @include span-columns(8);
+    @include shift(2);
+  }
+}

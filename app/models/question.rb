@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  has_many :comments
 
   scope :low, ->{ where('upvote BETWEEN 0 AND 3') }
   scope :med, ->{ where('upvote BETWEEN 4 AND 7') }
