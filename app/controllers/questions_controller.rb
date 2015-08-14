@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.all.order(created_at: :desc)
     @comment = Comment.new(question: @question)
   end
 
@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @question.save
     
     redirect_to @question, notice: 'Question was sucessfully updated.'
   end
@@ -46,7 +47,7 @@ class QuestionsController < ApplicationController
   end
 
   def upvote_question
-    @question.increment_counter(:upvote, 5)
+    @question.increment_counter(:upvote, 1)
     redirect_to questions_path
   end
 

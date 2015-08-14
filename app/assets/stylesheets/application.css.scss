@@ -10,7 +10,7 @@
 section {
   @include outer-container;
 
-  .cards {
+  article {
     @include span-columns(10);
     @include shift(1);
   }

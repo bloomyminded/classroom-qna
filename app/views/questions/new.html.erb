@@ -1,5 +1,22 @@
-<h1>New Question</h1>
+<article>
+  <span class="centered-butt">
+    <%= button_to 'Back', questions_path, method: :get %>
+  </span>
 
-<%= render 'form' %>
+  <br>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header">
+        New Question
+      </div>
+      <div class="card-copy">
+        <%= form_for @question do |f| %>
+          <p><%= f.text_area :title %></p>
+          <p><%= f.submit "Submit Question"%></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Back', questions_path %>
+
+</article>

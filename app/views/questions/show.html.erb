@@ -1,28 +1,29 @@
-<p id="notice"><%= notice %></p>
+<article>
+  <p id="notice"><%= notice %></p>
 
-<div class="centered-butt">
-  <%= button_to 'Back', questions_path, method: :get %>
-</div>
+  <div class="centered-butt">
+    <%= button_to 'Back', questions_path, method: :get %>
+  </div>
 
-<br>
+  <br>
 
-<div class="cards">
-  <div class="card">
-    <div class="card-header">
-      <%= @question.title %>
-    </div>
-    <div class="card-copy">
-      <%= (render partial: "refills/comment", collection: @question.comments) || "No comments yet" %>
-    </div>
-    <div class="card-info">
-      <span class=<%= @question.upvote_rank? %> ><%= @question.upvote %></span>
-    </div>
-    <div class="card-comment">
-      <%= form_for [@question, @question.comments.build] do |f| %>
-        <p><%= f.text_area :body %></p>
-      <p><%= f.submit "Add Comment" %></p>
-    <% end %>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header">
+        <%= @question.title %>
+      </div>
+      <div class="card-copy">
+        <%= (render partial: "refills/comment", collection: @question.comments) || "No comments yet" %>
+      </div>
+      <div class="card-info">
+        <span class=<%= @question.upvote_rank? %> ><%= @question.upvote %></span>
+      </div>
+      <div class="card-comment">
+        <%= form_for [@question, @question.comments.build] do |f| %>
+          <p><%= f.text_area :body %></p>
+        <p><%= f.submit "Add Comment" %></p>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>
-
+</article>
