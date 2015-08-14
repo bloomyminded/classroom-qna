@@ -11,7 +11,7 @@
       <div class="card">
         <div class="card-header">
           <%= link_to question.title , question  %>
-          <span class=<%= question.upvote_rank? %> ><%= question.upvote %></span>
+          <span class=<%= question.upvote_rank? %> ><%= link_to question.upvote, upvote_question %></span>
         </div>
         <div class="card-copy">
           <%= (render partial: "refills/comment", collection: question.comments.limit(3)) || "No comments yet" %>
