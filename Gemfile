@@ -23,7 +23,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'guard-rails'
-  gem 'guard-livereload', '~> 2.'
+  gem 'guard-livereload', '~> 2.4', require: false
   gem 'pry-rails'
 end
 
