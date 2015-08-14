@@ -3,6 +3,7 @@
 @import "neat";
 @import "refills/comment";
 @import "refills/cards";
+@import "refills/badges";
 
 section {
   @include outer-container;
@@ -10,6 +11,22 @@ section {
   article {
     @include span-columns(10);
     @include shift(1);
+
+    .button-center {
+      text-align: center;
+    }
+
+    #notice {
+      text-align: center;
+    }
+
+    .time {
+      float: right;
+    }
+
+    .badge {
+      float: right;
+    }
   }
 
 }

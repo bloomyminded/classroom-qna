@@ -1,37 +1,20 @@
 <div class="cards">
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
-    </div>
+  <% @questions.each do |question| %>
+    <div class="card">
     <div class="card-header">
-      First Card
+      <%= link_to question.body, question  %>
+      <span class="badge"><%= question.get_votes %></span>
     </div>
     <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
+      <%= (render partial: "refills/comment", collection: question.comments.limit(3)) || "No comments yet" %>
+      <span class="time">asked <%= time_ago_in_words(question.created_at) %> ago</span>
+    </div>
+    <div class="card-comment-hide">
+      <%= form_for [question, question.comments.build] do |f| %>
+        <p><%= f.text_area :body %></p>
+      <p><%= f.submit "Add Comment" %></p>
+    <% end %>
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-4.png" alt="">
-    </div>
-    <div class="card-header">
-      Another Card
-    </div>
-    <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-3.png" alt="">
-    </div>
-    <div class="card-header">
-      The Last Card
-    </div>
-    <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </div>
-  </div>
+<% end %>
 </div>

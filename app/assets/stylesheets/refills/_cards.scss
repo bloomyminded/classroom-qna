@@ -1,7 +1,7 @@
 .cards {
   @include display(flex);
   @include flex-wrap(wrap);
-  @include justify-content(space-between);
+  @include justify-content(space-beteen);
 }
 
 .card {
@@ -14,10 +14,11 @@
   $base-link-color: $base-accent-color !default;
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;
+  $card-detail-color: transparentize($base-font-color, 0.5);
   //////////////////////////////////////////////////////////////////////////////////
 
   $card-border-color: $base-border-color;
-  $card-border: 1px solid $card-border-color;
+  $card-border: 2px solid $card-border-color;
   $card-background: lighten($card-border-color, 10%);
   $card-header-background: $card-background;
   $card-hover-background: lighten($card-background, 5%);
@@ -25,14 +26,13 @@
   $card-image-hover-background: lighten($card-image-background, 5%);
   $card-margin: 1em;
 
-  @include flex-basis(15em);
+  @include flex-basis(30em);
   @include flex-grow(1);
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
   border-radius: $base-border-radius;
   border: $card-border;
-  box-shadow: 0 2px 4px darken($base-background-color, 10%);
-  cursor: pointer;
+  box-shadow: 0 8px 8px darken($base-background-color, 30%);
   margin: 0 $card-margin $base-spacing $card-margin;
   position: relative;
   position: relative;
@@ -58,6 +58,10 @@
     font-weight: bold;
     line-height: 1.5em;
     padding: ($base-spacing / 3) ($base-spacing / 2);
+
+    span {
+      float: right;
+    }
   }
 
   .card-copy {
@@ -68,8 +72,49 @@
     p {
       margin: 0 0 ($base-spacing / 2);
     }
+
+    span {
+      color: $card-detail-color;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  }
+
+  .card-info {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+  }
+
+  .card-comment {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+
+
   }
   
+  .card-comment-hide {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+
+    display: none; 
+  }
+
+
   &:focus,
   &:hover {
     background-color: $card-hover-background;
@@ -80,6 +125,10 @@
   
     .card-header {
       background-color: $card-hover-background;
+    }
+
+    .card-comment-hide {
+      display: block;
     }
   }
 
