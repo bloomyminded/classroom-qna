@@ -1,0 +1,15 @@
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "refills/comment";
+@import "refills/cards";
+
+section {
+  @include outer-container;
+
+  article {
+    @include span-columns(10);
+    @include shift(1);
+  }
+
+}
