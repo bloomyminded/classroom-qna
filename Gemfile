@@ -11,6 +11,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'capistrano-rails', group: :development
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'refills'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
@@ -18,6 +23,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'guard-rails'
+  gem 'guard-livereload', '~> 2.'
   gem 'pry-rails'
 end
 
