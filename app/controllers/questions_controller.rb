@@ -19,14 +19,9 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_path, notice: 'Question was added'
     else
-      redirect_to new_question_path , notice: 'Failed to add question.'
+      render :new
     end
   end
-
-  def destroy
-
-  end
-
 
   private
 
