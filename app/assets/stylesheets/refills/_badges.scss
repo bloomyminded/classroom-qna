@@ -1,11 +1,12 @@
 $badge-font-size: 0.75em !default;
+$blue: #5B7876 !default;
 $medium-gray: #999 !default;
 $alert-color: #fff6bf !default;
 $error-color: #fbe3e4 !default;
 $notice-color: #e5edf8 !default;
 $success-color: #e6efc2 !default;
 
-@mixin badge($color: $medium-gray) {
+@mixin badge($color: $blue) {
   background-color: $color;
   border-radius: $badge-font-size * 5;
   color: darken($color, 60%);
