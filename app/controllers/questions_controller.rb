@@ -23,6 +23,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def upvote
+    @question = Question.find(params[:id])
+    @question.votes.create
+    redirect_to questions_path, notice: 'Question was upvoted'
+  end
+
   private
 
   def set_question
