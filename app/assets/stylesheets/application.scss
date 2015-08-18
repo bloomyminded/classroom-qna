@@ -4,6 +4,14 @@
 @import "refills/comment";
 @import "refills/cards";
 @import "refills/badges";
+@import "refills/navigation";
+@import "refills/footer";
+
+body {
+  background-color: #E6E6E6;
+  margin: 0px;
+  padding: 0px;
+}
 
 section {
   @include outer-container;
