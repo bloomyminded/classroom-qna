@@ -16,6 +16,7 @@ gem 'neat'
 gem 'bitters'
 gem 'refills'
 gem 'rails_12factor'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
