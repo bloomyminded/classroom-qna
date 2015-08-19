@@ -7,10 +7,26 @@
 @import "refills/navigation";
 @import "refills/footer";
 
+$base-accent-color: #477DCA !default;
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
+  position: relative;
   background-color: #E6E6E6;
   margin: 0px;
   padding: 0px;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 section {
