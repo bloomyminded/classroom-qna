@@ -65,6 +65,7 @@
   }
 
   .footer-secondary-links {
+    color: white;
     @include media($large-screen) {
       float: right;
     }
