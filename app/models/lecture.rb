@@ -1,3 +1,3 @@
 class Lecture < ActiveRecord::Base
-  belongs_to :classroom
+  belongs_to :course
 end

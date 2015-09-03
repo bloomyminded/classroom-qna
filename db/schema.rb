@@ -11,21 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903171216) do
+ActiveRecord::Schema.define(version: 20150903205411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "classrooms", force: :cascade do |t|
-    t.integer  "school_id"
-    t.string   "name",                       null: false
-    t.text     "description",   default: "", null: false
-    t.integer  "student_count", default: 0,  null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "classrooms", ["school_id"], name: "index_classrooms_on_school_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text     "body",        default: "",    null: false
@@ -39,14 +28,27 @@ ActiveRecord::Schema.define(version: 20150903171216) do
   add_index "comments", ["question_id"], name: "index_comments_on_question_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "lectures", force: :cascade do |t|
-    t.integer  "classroom_id"
-    t.string   "title",        default: "", null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "courses", force: :cascade do |t|
+    t.integer  "school_id"
+    t.string   "name",                       null: false
+    t.text     "description",   default: "", null: false
+    t.integer  "student_count", default: 0,  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_id"
   end
 
-  add_index "lectures", ["classroom_id"], name: "index_lectures_on_classroom_id", using: :btree
+  add_index "courses", ["school_id"], name: "index_courses_on_school_id", using: :btree
+  add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
+
+  create_table "lectures", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "title",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.text     "body",         default: "",    null: false
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150903171216) do
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
+    t.string   "name",       default: "",    null: false
     t.string   "city",                       null: false
     t.string   "state",                      null: false
     t.integer  "zip",                        null: false
@@ -70,20 +73,21 @@ ActiveRecord::Schema.define(version: 20150903171216) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "first_name",             default: "", null: false
-    t.string   "last_name",              default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "first_name",             default: "",    null: false
+    t.string   "last_name",              default: "",    null: false
+    t.boolean  "is_admin",               default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -99,10 +103,11 @@ ActiveRecord::Schema.define(version: 20150903171216) do
   add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
-  add_foreign_key "classrooms", "schools"
   add_foreign_key "comments", "questions"
   add_foreign_key "comments", "users"
-  add_foreign_key "lectures", "classrooms"
+  add_foreign_key "courses", "schools"
+  add_foreign_key "courses", "users"
+  add_foreign_key "lectures", "courses"
   add_foreign_key "questions", "users"
   add_foreign_key "votes", "questions"
   add_foreign_key "votes", "users"

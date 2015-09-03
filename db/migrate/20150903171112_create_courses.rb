@@ -1,6 +1,6 @@
-class CreateClassrooms < ActiveRecord::Migration
+class CreateCourses < ActiveRecord::Migration
   def change
-    create_table :classrooms do |t|
+    create_table :courses do |t|
       t.belongs_to :school, index: true, foreign_key: true
       t.string :name, null: false
       t.text :description, default: "", null: false

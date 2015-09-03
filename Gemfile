@@ -23,6 +23,7 @@ group :development, :test do
   gem 'guard-rails'
   gem 'guard-livereload'
   gem 'pry-rails'
+  gem 'web-console'
   gem 'spring'
   gem 'faker'
 end
