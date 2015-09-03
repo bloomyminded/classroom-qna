@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903205411) do
+ActiveRecord::Schema.define(version: 20150903215832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20150903205411) do
   end
 
   add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "course_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "memberships", ["course_id"], name: "index_memberships_on_course_id", using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.text     "body",         default: "",    null: false
@@ -108,6 +118,8 @@ ActiveRecord::Schema.define(version: 20150903205411) do
   add_foreign_key "courses", "schools"
   add_foreign_key "courses", "users"
   add_foreign_key "lectures", "courses"
+  add_foreign_key "memberships", "courses"
+  add_foreign_key "memberships", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "votes", "questions"
   add_foreign_key "votes", "users"
