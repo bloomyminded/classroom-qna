@@ -8,6 +8,10 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'turbolinks'
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
 
 gem 'devise'
 
@@ -17,6 +21,7 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rails'
+  gem 'guard-livereload'
   gem 'pry-rails'
   gem 'spring'
   gem 'faker'
