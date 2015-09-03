@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  belongs_to :school
+  belongs_to :schools
   has_many :lectures
   has_many :students,
     through: :memberships,
