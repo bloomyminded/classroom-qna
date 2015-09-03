@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: class-qna_development
+
+test:
+  <<: *default
+  database: class-qna_test
+
+#   production:
+#     url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: class-qna_production
+  username: class-qna
+  password: <%= ENV['CLASS-QNA_DATABASE_PASSWORD'] %>
