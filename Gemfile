@@ -26,5 +26,6 @@ group :development, :test do
   gem 'web-console'
   gem 'spring'
   gem 'faker'
+  gem 'railroady'
 end
 
