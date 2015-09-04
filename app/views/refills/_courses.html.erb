@@ -1,0 +1,11 @@
+<div class="cards">
+  <% @courses.each do |course| %>
+    <div class="card">
+    <div class="card-header">
+      <%= link_to course.name, '#' %>
+    </div>
+    <div class="card-copy">
+      <%= course.description %>
+    </div>
+  <% end %>
+</div>
