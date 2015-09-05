@@ -6,4 +6,8 @@ class Course < ActiveRecord::Base
     source: :user,
     foreign_key: :email
   has_many :memberships
+  
+  def to_s
+    "#{self.name}"
+  end
 end

@@ -12,7 +12,25 @@
 <%= render partial: "refills/navigation" %>
 
 <section>
+
+    <% if notice %>
+      <article>
+        <br>
+        <div class="flash-notice">
+          <span><%= notice %></span>
+        </div>
+      </article>
+    <% elsif alert %>
+      <article>
+        <br>
+        <div class="flash-alert">
+          <span><%= alert %></span>
+        </div>
+      </article>
+    <% end %>
+
   <%= yield %>
+
 </section>
 
 <%= render partial: "refills/footer" %>
