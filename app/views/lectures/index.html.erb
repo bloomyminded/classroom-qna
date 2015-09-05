@@ -1,0 +1,20 @@
+<br>
+
+<div class="cards">
+  <% @lectures.each do |lecture| %>
+    <div class="card">
+      <div class="card-header">
+        <%= link_to "Lecture", lecture_path(lecture) %>:  
+        <%= lecture.title %>
+         
+        <span float:"right"><%= lecture.created_at.strftime("%B %-d, %Y") %></span>
+      </div>
+      <div class="card-copy">
+        <strong>Questions:</strong> <%= lecture.questions_count %>
+        <strong>Comments:</strong> <%= lecture.comments_count %>
+        <strong>Votes:</strong> <%= lecture.votes_count %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
