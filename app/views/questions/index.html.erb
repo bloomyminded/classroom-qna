@@ -1,17 +1,16 @@
-<article>
+<article class="question-list">
 
   <br>
 
-  <div>
-    <span class="button-center">
-      <%= button_to 'New Question', new_question_path, method: :get %>
-    </span>
-  </div>
+  <%= render partial: "refills/questions" %>
 
   <br>
 
+</article>
 
-  <%= render partial: "refills/cards" %>
+<article class="question-show">
+
+  <br>
 
 
   <br>
