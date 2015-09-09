@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
-  def is_student? course
-    course.students.exists?(self.id)
+  def is_student? school_or_course 
+    school_or_course.students.exists?(self.id)
   end
 end
