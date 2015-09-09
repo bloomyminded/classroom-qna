@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904211338) do
+ActiveRecord::Schema.define(version: 20150909053918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,10 +100,12 @@ ActiveRecord::Schema.define(version: 20150904211338) do
     t.string   "first_name",             default: "",    null: false
     t.string   "last_name",              default: "",    null: false
     t.boolean  "is_admin",               default: false, null: false
+    t.integer  "school_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["school_id"], name: "index_users_on_school_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "question_id"
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 20150904211338) do
   add_foreign_key "memberships", "users"
   add_foreign_key "questions", "lectures"
   add_foreign_key "questions", "users"
+  add_foreign_key "users", "schools"
   add_foreign_key "votes", "questions"
   add_foreign_key "votes", "users"
 end

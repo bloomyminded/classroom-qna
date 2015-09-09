@@ -20,18 +20,6 @@ User.new(first_name: "Professor",
          password_confirmation: "password",
          is_admin: false).save!(validate: false)
 
-300.times do |n|
-  first_name  = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = Faker::Internet.safe_email(first_name + last_name) 
-  password = "password"
-  User.new(first_name: first_name,
-           last_name: last_name,
-           email: email,
-           password:              password,
-           password_confirmation: password).save!(validate: false)
-end
-
 #Schools
 10.times do
   name = "U" + (0...2).map { (65 + rand(26)).chr  }.join 
@@ -44,6 +32,20 @@ end
              zip: zip).save!
 end
 
+300.times do |n|
+  first_name  = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.safe_email(first_name + last_name) 
+  password = "password"
+  User.new(first_name: first_name,
+           last_name: last_name,
+           email: email,
+           password: password,
+           school_id: School.all.limit(1).order("RANDOM()").first.id,
+           password_confirmation: password).save!(validate: false)
+end
+
+
 #Courses
 School.all.each do |s|
   4.times do |c|
@@ -54,7 +56,7 @@ School.all.each do |s|
                               user_id: User.all[1].id)
 
     30.times do
-      student = User.all.limit(1).order("RANDOM()").first
+      student = User.where(school_id: s.id).limit(1).order("RANDOM()").first
       course.students << student
     end
   end

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  belongs_to :school
   has_many :courses, 
     as: :student,
     through: :memberships
