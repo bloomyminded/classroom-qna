@@ -6,6 +6,18 @@ Question.destroy_all
 Comment.destroy_all
 Vote.destroy_all
 
+#Schools
+10.times do
+  name = "U" + (0...2).map { (65 + rand(26)).chr  }.join 
+  city = Faker::Address.city
+  state = Faker::Address.state_abbr
+  zip = Faker::Address.zip
+  School.new(name: name,
+             city: city,
+             state: state,
+             zip: zip).save!
+end
+
 User.new(first_name: "Admin", 
          last_name: "Flapjack",
          email: "admin@qna.com", 
@@ -28,17 +40,6 @@ User.new(first_name: "Philip",
          school_id: 1,
          is_admin: false).save!(validate: false)
 
-#Schools
-10.times do
-  name = "U" + (0...2).map { (65 + rand(26)).chr  }.join 
-  city = Faker::Address.city
-  state = Faker::Address.state_abbr
-  zip = Faker::Address.zip
-  School.new(name: name,
-             city: city,
-             state: state,
-             zip: zip).save!
-end
 
 300.times do |n|
   first_name  = Faker::Name.first_name
