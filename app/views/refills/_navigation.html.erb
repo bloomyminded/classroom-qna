@@ -7,27 +7,25 @@
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if user_signed_in? %>
-          <li class="nav-link"><%= link_to 'My Courses', courses_path %></li>
+            <% if current_user.school %>
+              <li class="nav-link"><%= link_to 'School', school_path(current_user.school) %></li>
+              <li class="nav-link"><%= link_to 'Courses', courses_path %></li>
+            <% end %>
+          <% if current_user.is_admin? %>
+            <li class="nav-link more"><a href="javascript:void(0)">Admin</a>
+              <ul class="submenu">
+                <li><%= link_to 'Schools', schools_path %></li>
+                <li><%= link_to 'Courses', courses_path %></li>
+                <!--<li class="more"><a href="javascript:void(0)">Item with submenu</a>
+                  <ul class="submenu">
+                    <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                    <li><a href="javascript:void(0)">Another Item</a></li>
+                  </ul>
+                </li>-->
+              </ul>
+            </li>
+          <% end %>
         <% end %>
-        <!-- Sub-menu for future reference
-        <li class="nav-link more"><a href="javascript:void(0)">More</a>
-          <ul class="submenu">
-            <li><a href="javascript:void(0)">Submenu Item</a></li>
-            <li><a href="javascript:void(0)">Another Item</a></li>
-            <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-              <ul class="submenu">
-                <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                <li><a href="javascript:void(0)">Another Item</a></li>
-              </ul>
-            </li>
-            <li class="more"><a href="javascript:void(0)">Another submenu</a>
-              <ul class="submenu">
-                <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                <li><a href="javascript:void(0)">An Item</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>-->
       </ul>
     </nav>
     <div class="navigation-tools">

@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = current_user.courses
+    @courses = Course.all if current_user.is_admin?
   end
 
   def show
