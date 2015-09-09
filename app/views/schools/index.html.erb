@@ -1,0 +1,30 @@
+<article>
+
+  <br>
+
+  <div class="cards">
+    <% @schools.each do |s| %>
+      <div class="card">
+        <div class="card-header">
+          <%= s.name %> 
+        </div>
+        <div class="card-copy">
+          <p><%= s.city %>, <%= s.state %> <%= s.zip %></p>
+
+          <h2>Courses</h2> 
+          <ul>
+            <% s.courses.each do |c| %>
+              <li> <%= link_to c.name, courses_path(c) %>
+                  <% if c.user_id %>
+                    | <%= User.find(c.user_id) %>
+                  <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</article>

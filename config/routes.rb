@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :schools, only: [:index, :show]
+
 
 
   root "home#index"
