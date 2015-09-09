@@ -15,9 +15,17 @@ User.new(first_name: "Admin",
 
 User.new(first_name: "Professor", 
          last_name: "Farnsworth",
-         email: "farnsworth@3012.com", 
+         email: "instructor@qna.com", 
          password: "password", 
          password_confirmation: "password",
+         is_admin: false).save!(validate: false)
+
+User.new(first_name: "Philip", 
+         last_name: "Fry",
+         email: "student@qna.com", 
+         password: "password", 
+         password_confirmation: "password",
+         school_id: 1,
          is_admin: false).save!(validate: false)
 
 #Schools
