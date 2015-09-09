@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'bourbon'
 gem 'neat'
 gem 'refills'
+gem 'faker'
 
 gem 'devise'
 
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'web-console'
   gem 'spring'
-  gem 'faker'
   gem 'railroady'
 end
 
