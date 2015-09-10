@@ -13,8 +13,9 @@ gem 'bourbon'
 gem 'neat'
 gem 'refills'
 gem 'faker'
-
 gem 'devise'
+gem 'rolify'
+gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
