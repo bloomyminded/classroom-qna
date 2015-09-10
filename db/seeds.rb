@@ -41,7 +41,7 @@ User.new(first_name: "Philip",
          is_admin: false).save!(validate: false)
 
 
-300.times do |n|
+100.times do |n|
   first_name  = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.safe_email(first_name + last_name) 
