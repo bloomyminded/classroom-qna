@@ -14,7 +14,7 @@
           <h2>Courses</h2> 
           <ul>
             <% s.courses.each do |c| %>
-              <li> <%= link_to c.name, courses_path(c) %>
+              <li> <%= link_to c.name, course_path(c) %>
                   <% if c.user_id %>
                     | <%= User.find(c.user_id) %>
                   <% end %>
