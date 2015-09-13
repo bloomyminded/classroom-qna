@@ -7,10 +7,10 @@ Comment.destroy_all
 Vote.destroy_all
 
 #Schools
-10.times do
-  name = "U" + (0...2).map { (65 + rand(26)).chr  }.join 
-  city = Faker::Address.city
+5.times do
   state = Faker::Address.state_abbr
+  name = "University of " + state
+  city = Faker::Address.city
   zip = Faker::Address.zip
   School.new(name: name,
              city: city,
@@ -22,23 +22,20 @@ User.new(first_name: "Admin",
          last_name: "Flapjack",
          email: "admin@qna.com", 
          password: "password", 
-         password_confirmation: "password",
-         is_admin: true).save!(validate: false)
+         password_confirmation: "password").save!(validate: false)
 
 User.new(first_name: "Professor", 
          last_name: "Farnsworth",
          email: "instructor@qna.com", 
          password: "password", 
-         password_confirmation: "password",
-         is_admin: false).save!(validate: false)
+         password_confirmation: "password").save!(validate: false)
 
 User.new(first_name: "Philip", 
          last_name: "Fry",
          email: "student@qna.com", 
          password: "password", 
          password_confirmation: "password",
-         school_id: 1,
-         is_admin: false).save!(validate: false)
+         school_id: 1).save!(validate: false)
 
 
 100.times do |n|
@@ -64,7 +61,7 @@ School.all.each do |s|
                               description: description,
                               user_id: User.all[1].id)
 
-    30.times do
+    10.times do
       student = User.where(school_id: s.id).limit(1).order("RANDOM()").first
       course.students << student
     end
@@ -82,7 +79,7 @@ end
 #Questions
 Lecture.all.each do |l|
   students = l.course.students
-  10.times do
+  8.times do
     student = students.limit(1).order("RANDOM()").first
     body = Faker::Lorem.paragraph
     student.questions.create(body: body, lecture_id: l.id)
