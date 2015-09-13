@@ -1,27 +1,27 @@
 class SchoolsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!, only: [:index]
+  before_action :get_school, only: [:show, :destroy]
 
   def index
     @schools = School.all
   end
 
   def show
-    authenticate_student!
-    @school = get_school
     @courses = @school.courses
+  end
+
+  def destroy
+    authorize @school
+
+    if @school.destroy
+      redirect_to action: "index", notice: "Delete successful!"
+    else
+      redirect_to action: "index", notice: "Failed to delete school!"
+    end
   end
 
   private
   
-  def authenticate_student!
-    if ( current_user.is_admin? || current_user.is_student?(@school) )
-      true
-    else
-      return redirect_to "/"
-    end
-  end
-
   def get_school
     @school = School.find(params[:id])
   end

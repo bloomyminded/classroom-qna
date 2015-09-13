@@ -1,8 +1,8 @@
 $base-spacing: 1.5em !default;
-$alert-color: #fff6bf !default;
-$error-color: #fbe3e4 !default;
-$notice-color: #e5edf8 !default;
-$success-color: #e6efc2 !default;
+$alert-color: #ffffff !default;
+$error-color: #ffffff !default;
+$notice-color: #ffffff !default;
+$success-color: #ffffff !default;
 
 @keyframes fadeOut {
   0% { opacity: 1; }
@@ -10,32 +10,16 @@ $success-color: #e6efc2 !default;
 }
 
 @mixin flash($color) {
-  @include animation(fadeOut 4s);
+  @include animation(fadeOut 12s);
   @include animation-fill-mode(forwards);
-  background-color: $color;
-  color: darken($color, 60%);
-  display: block;
-  font-weight: 600;
-  margin-bottom: $base-spacing / 2;
-  padding: $base-spacing / 2;
+  display: inline-block;
+  float: right;
   text-align: center;
-  box-shadow: 0 8px 8px #b3b3b3;
-  margin-left: 20%;
-  margin-right: 20%;
-
-
-  a {
-    color: darken($color, 70%);
-
-    &:focus,
-    &:hover {
-      color: darken($color, 90%);
-    }
-  }
+  color: $color !important;
 }
 
 .flash-alert {
-  @include flash($alert-color);
+  @include flash(#FFFFFF);
 }
 
 .flash-error {

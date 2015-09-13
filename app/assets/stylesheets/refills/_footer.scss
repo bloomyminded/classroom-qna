@@ -1,5 +1,5 @@
 .footer-2 {
-  $base-spacing: 1.5em !default;
+  $base-spacing: 0.5em !default;
   $action-color: #477DCA !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
@@ -9,13 +9,15 @@
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
 
   background: $footer-background;
-  padding: $base-spacing;
+  padding: 5px;
   width: 100%;
-  display: inline-block;
-  position: absolute;
+  font-size: 0.8em;
+  font-weight: 800;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
+  text-align: center;
 
   .footer-logo {
     margin-right: 1em;
@@ -65,9 +67,10 @@
   }
 
   .footer-secondary-links {
+    display: inline-block;
     color: white;
     @include media($large-screen) {
-      float: right;
+      float: left;
     }
 
     li {
@@ -78,7 +81,7 @@
       margin: 1em 0 0 0;
 
       @include media($large-screen) {
-        float: right;
+        float: left;
         margin-top: 0;
       }
 

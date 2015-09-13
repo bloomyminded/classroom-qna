@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910214342) do
+ActiveRecord::Schema.define(version: 20150913191444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,16 +134,16 @@ ActiveRecord::Schema.define(version: 20150910214342) do
   add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
-  add_foreign_key "comments", "questions"
-  add_foreign_key "comments", "users"
-  add_foreign_key "courses", "schools"
-  add_foreign_key "courses", "users"
-  add_foreign_key "lectures", "courses"
-  add_foreign_key "memberships", "courses"
-  add_foreign_key "memberships", "users"
-  add_foreign_key "questions", "lectures"
-  add_foreign_key "questions", "users"
-  add_foreign_key "users", "schools"
-  add_foreign_key "votes", "questions"
-  add_foreign_key "votes", "users"
+  add_foreign_key "comments", "questions", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "courses", "schools", on_delete: :cascade
+  add_foreign_key "courses", "users", on_delete: :cascade
+  add_foreign_key "lectures", "courses", on_delete: :cascade
+  add_foreign_key "memberships", "courses", on_delete: :cascade
+  add_foreign_key "memberships", "users", on_delete: :cascade
+  add_foreign_key "questions", "lectures", on_delete: :cascade
+  add_foreign_key "questions", "users", on_delete: :cascade
+  add_foreign_key "users", "schools", on_delete: :cascade
+  add_foreign_key "votes", "questions", on_delete: :cascade
+  add_foreign_key "votes", "users", on_delete: :cascade
 end

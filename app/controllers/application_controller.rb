@@ -1,23 +1,15 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
-  before_action :get_user
+  before_filter :auth_user
 
   def not_found
       raise ActionController::RoutingError.new('Not Found')
   end
 
-  def authenticate_admin! 
-    if @user.is_admin?
-      true
-    else
-      return redirect_to "/"
+  def auth_user
+    if authenticate_user!
+      @user = current_user
     end
   end
-
-  private
-
-  def get_user
-    @user = current_user
-  end
-
 end

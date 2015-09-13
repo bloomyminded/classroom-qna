@@ -8,7 +8,7 @@ Vote.destroy_all
 
 #Schools
 5.times do
-  state = Faker::Address.state_abbr
+  state = Faker::Address.state
   name = "University of " + state
   city = Faker::Address.city
   zip = Faker::Address.zip

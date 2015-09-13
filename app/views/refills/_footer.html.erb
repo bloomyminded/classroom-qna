@@ -1,8 +1,14 @@
 <footer class="footer-2" role="contentinfo">
-  <div class="footer-logo">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
-  </div>
   <div class="footer-secondary-links">
-    Cody Roberts . 2015
+    Cody Roberts &copy; 2015
   </div>
+  <% if notice %>
+    <div class="flash-notice">
+      <span><%= notice %></span>
+    </div>
+  <% elsif alert %>
+    <div class="flash-alert">
+      <span><%= alert %></span>
+    </div>
+  <% end %>
 </footer>

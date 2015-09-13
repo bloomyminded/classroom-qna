@@ -4,24 +4,14 @@ class LecturesController < ApplicationController
 
   def index
     @course = Course.find(params[:course_id])
-    authenticate_student!
     @lectures = @course.lectures
   end
 
   def show
-    authenticate_student!
     @questions = @lecture.questions
   end
 
   private
-  
-  def authenticate_student!
-    if ( current_user.is_admin? || current_user.is_student?(@course) )
-      true
-    else
-      return redirect_to "/"
-    end
-  end
 
   def get_instance
     @lecture = Lecture.find(params[:id])

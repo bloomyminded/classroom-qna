@@ -12,11 +12,11 @@
         <%= @question.body  %>
       </div>
       <div class="card-copy">
-        <%= (render partial: "refills/comment", collection: @question.comments) || "No comments yet" %>
+        <%= (render partial: "refills/comment", collection: @comments) || "No comments yet" %>
         <span class="time">asked by <%= @question.user %> <%= time_ago_in_words(@question.created_at) %> ago</span>
       </div>
       <div class="card-comment">
-        <%= form_for [@question, @question.comments.build] do |f| %>
+        <%= form_for [@question, @comments.build] do |f| %>
           <p><%= f.text_area :body %></p>
           <p><%= f.submit "Add Comment" %></p>
       <% end %>

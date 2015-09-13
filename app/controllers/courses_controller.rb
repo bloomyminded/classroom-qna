@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :get_course, only: [:show]
-  before_action :authenticate_student!, only: [:show]
 
   def index
-    @courses = current_user.courses
-    @courses = Course.all if current_user.is_admin?
+    @courses = @user.courses
+    @courses = Course.all if @user.has_role? :admin
   end
 
   def show
@@ -14,14 +13,6 @@ class CoursesController < ApplicationController
   end
 
   private
-
-  def authenticate_student!
-    if ( current_user.is_admin? || current_user.is_student?(@course) )
-      true
-    else
-      return redirect_to "/"
-    end
-  end
 
   def get_course
     @course = Course.find(params[:id])

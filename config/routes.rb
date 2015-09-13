@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show], shallow: true do
     resources :lectures, only: [:index, :show], shallow: true do
       resources :questions, only: [:index, :show, :create, :new], shallow: true do
-        resources :comments, only: [:create, :new]
+        resources :comments, only: [:create, :destroy]
       end
     end
   end
 
-  resources :schools, only: [:index, :show]
+  resources :schools, only: [:index, :show, :destroy]
 
 
 
