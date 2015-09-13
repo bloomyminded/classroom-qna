@@ -1,0 +1,25 @@
+<article>
+
+  <br>
+
+  <div class="new_button">
+    <%= button_to 'Back', :back, method: :get %>
+  </div>
+
+  <br>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-header">
+        New Lecture 
+      </div>
+      <div class="card-copy">
+        <%= form_for @lecture, url: course_lectures_path(@course) do |f| %>
+          <p><%= f.text_area :title %></p>
+          <p><%= f.submit "Create Lecture"%></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</article>
