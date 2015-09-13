@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   resources :courses, only: [:index, :show], shallow: true do
-    resources :lectures, only: [:index, :show], shallow: true do
+    resources :lectures, only: [:index, :show, :create, :new, :destroy], shallow: true do
       resources :questions, only: [:index, :show, :create, :new], shallow: true do
         resources :comments, only: [:create, :destroy]
       end

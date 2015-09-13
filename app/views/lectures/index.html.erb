@@ -1,20 +1,34 @@
-<br>
+<article>
+  <br>
 
-<div class="cards">
-  <% @lectures.each do |lecture| %>
-    <div class="card">
-      <div class="card-header">
-        <%= link_to "Lecture", lecture_path(lecture) %>:  
-        <%= lecture.title %>
-         
-        <span float:"right"><%= lecture.created_at.strftime("%B %-d, %Y") %></span>
-      </div>
-      <div class="card-copy">
-        <strong>Questions:</strong> <%= lecture.questions_count %>
-        <strong>Comments:</strong> <%= lecture.comments_count %>
-        <strong>Votes:</strong> <%= lecture.votes_count %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  <div class="new_button">
+    <%= button_to "New Lecture", new_course_lecture_path, method: "get" %>
+  </div>
 
+  <br>
+
+  <div class="cards">
+    <% @lectures.each do |lecture| %>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to "Lecture", lecture_path(lecture) %>:  
+          <%= lecture.title %>
+          <span>
+            <%= lecture.created_at.strftime("%B %-d, %Y ") %> 
+          </span>
+        </div>
+        <div class="card-copy">
+          <strong>Questions:</strong> <%= lecture.questions_count %>
+          <strong>Comments:</strong> <%= lecture.comments_count %>
+          <strong>Votes:</strong> <%= lecture.votes_count %>
+          <% if @user.has_role? :admin %>
+            <span>
+              <%= link_to "X", lecture_path(lecture), method: :delete %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</article>
