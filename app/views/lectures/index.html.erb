@@ -1,9 +1,11 @@
 <article>
   <br>
 
-  <div class="new_button">
-    <%= button_to "New Lecture", new_course_lecture_path, method: "get" %>
-  </div>
+  <% if (@user.has_role? :admin) || (@user.has_role? :instructor) %>
+    <div class="new_button">
+      <%= button_to "New Lecture", new_course_lecture_path, method: "get" %>
+    </div>
+  <% end %>
 
   <br>
 
@@ -21,7 +23,7 @@
           <strong>Questions:</strong> <%= lecture.questions_count %>
           <strong>Comments:</strong> <%= lecture.comments_count %>
           <strong>Votes:</strong> <%= lecture.votes_count %>
-          <% if @user.has_role? :admin %>
+        <% if (@user.has_role? :admin) || (@user.has_role? :instructor) %>
             <span>
               <%= link_to "X", lecture_path(lecture), method: :delete %>
             </span>

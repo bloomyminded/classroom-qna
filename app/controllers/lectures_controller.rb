@@ -20,6 +20,8 @@ class LecturesController < ApplicationController
     @course = Course.find(params[:course_id])
     @lecture = @course.lectures.create(lecture_params) 
 
+    authorize @lecture
+
     if @lecture.save
       redirect_to course_lectures_path(@course), notice: "New lecture created!"
     else
@@ -29,6 +31,9 @@ class LecturesController < ApplicationController
 
   def destroy
     @lecture = Lecture.find(params[:id])
+
+    authorize @lecture
+
 
     if @lecture.destroy
       redirect_to :back, notice: "Lecture deleted"
