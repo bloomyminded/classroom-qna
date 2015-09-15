@@ -24,11 +24,15 @@ User.new(first_name: "Admin",
          password: "password", 
          password_confirmation: "password").save!(validate: false)
 
+User.all[0].add_role :admin
+
 User.new(first_name: "Professor", 
          last_name: "Farnsworth",
          email: "instructor@qna.com", 
          password: "password", 
          password_confirmation: "password").save!(validate: false)
+
+User.all[1].add_role :instructor
 
 User.new(first_name: "Philip", 
          last_name: "Fry",
