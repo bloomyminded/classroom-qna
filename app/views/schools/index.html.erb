@@ -6,7 +6,7 @@
     <% @schools.each do |s| %>
       <div class="card">
         <div class="card-header">
-          <%= s.name %> 
+          <%= s.name %>
           <% if @user.has_role? :admin %>
             <span><%= link_to "X", school_path(s), method: :delete %></span>
           <% end %>
