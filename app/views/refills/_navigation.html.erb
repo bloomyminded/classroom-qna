@@ -7,10 +7,6 @@
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if user_signed_in? %>
-            <% if @user.school %>
-              <li class="nav-link"><%= link_to 'School', school_path(@user.school) %></li>
-              <li class="nav-link"><%= link_to 'Courses', courses_path %></li>
-            <% end %>
           <% if @user.has_role? :admin %>
             <li class="nav-link more"><a href="javascript:void(0)">Admin</a>
               <ul class="submenu">
@@ -24,6 +20,13 @@
                 </li>-->
               </ul>
             </li>
+          <% else %>
+            <% if @user.school %>
+              <li class="nav-link"><%= link_to 'School', school_path(@user.school) %></li>
+            <% end %>
+            <% if @user.courses %>
+              <li class="nav-link"><%= link_to 'Courses', courses_path %></li>
+            <% end %>
           <% end %>
         <% end %>
       </ul>
