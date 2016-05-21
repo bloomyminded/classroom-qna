@@ -18,7 +18,5 @@ Rails.application.routes.draw do
 
   resources :schools, only: [:index, :show, :destroy]
 
-
-
   root "home#index"
 end

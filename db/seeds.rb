@@ -18,26 +18,26 @@ Vote.destroy_all
              zip: zip).save!
 end
 
-User.new(first_name: "Admin", 
+User.new(first_name: "Admin",
          last_name: "Flapjack",
-         email: "admin@qna.com", 
-         password: "password", 
+         email: "admin@qna.com",
+         password: "password",
          password_confirmation: "password").save!(validate: false)
 
 User.all[0].add_role :admin
 
-User.new(first_name: "Professor", 
+User.new(first_name: "Professor",
          last_name: "Farnsworth",
-         email: "instructor@qna.com", 
-         password: "password", 
+         email: "instructor@qna.com",
+         password: "password",
          password_confirmation: "password").save!(validate: false)
 
 User.all[1].add_role :instructor
 
-User.new(first_name: "Philip", 
+User.new(first_name: "Philip",
          last_name: "Fry",
-         email: "student@qna.com", 
-         password: "password", 
+         email: "student@qna.com",
+         password: "password",
          password_confirmation: "password",
          school_id: 1).save!(validate: false)
 

@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   belongs_to :school
-  has_many :courses, 
+  has_many :courses,
     as: :student,
     through: :memberships
   has_many :questions
@@ -12,13 +12,14 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :memberships
 
-  scope :admins, -> { where(:is_admin => true) }  
+  scope :admins, -> { where(:is_admin => true) }
 
   def to_s
     "#{self.first_name} #{self.last_name}"
   end
 
-  def is_student? school_or_course 
+  def is_student? school_or_course
     school_or_course.students.exists?(self.id)
   end
+
 end
