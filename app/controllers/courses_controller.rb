@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   def index
     @courses = @user.courses
     @courses = Course.all if @user.has_role? :admin
+    @courses = Course.all.where(user_id: @user.id) if @user.has_role? :instructor
   end
 
   def show
