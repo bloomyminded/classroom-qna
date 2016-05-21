@@ -63,7 +63,7 @@ School.all.each do |s|
     description = Faker::Lorem.paragraph
     course = s.courses.create(name: name, 
                               description: description,
-                              user_id: User.all[1].id)
+                              user_id: User.find(1).id)
 
     10.times do
       student = User.where(school_id: s.id).limit(1).order("RANDOM()").first
