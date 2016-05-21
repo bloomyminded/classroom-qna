@@ -2,7 +2,7 @@
   <% @courses.each do |course| %>
     <div class="card">
       <div class="card-header">
-        <%= link_to course.name, course %>
+        <%= link_to course.name, course %> | <%= link_to course.school.name, course.school %>
       </div>
       <div class="card-copy">
         <%= course.description %>
