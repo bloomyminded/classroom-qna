@@ -3,7 +3,7 @@
     <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_<%= rand(1..4) %>.png" alt="Logo image">
   </div>
   <div class="comment-content">
-    <% if @user.has_role? :admin %>
+    <% if (@user.has_role? :admin) || (comment.user.id == @user.id) %>
       <span><%= link_to "X", comment_path(comment.id), method: :delete %></span>
     <% end %>
     <h1><%= comment.user %></h1>
