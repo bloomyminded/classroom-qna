@@ -1,6 +1,6 @@
 <div class="comment">
   <div class="comment-image">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_<%= rand(1..4) %>.png" alt="Logo image">
+    <%= image_tag "https://upload.wikimedia.org/wikipedia/en/7/77/Facepalm_silhouette.svg" %>
   </div>
   <div class="comment-content">
     <% if (@user.has_role? :admin) || (comment.user.id == @user.id) %>
